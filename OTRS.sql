@@ -33,8 +33,25 @@ SELECT count(*) FROM ticket where  user_id = 1;
 SELECT COUNT(*) FROM ticket WHERE create_time >= CURDATE();
 /*create_time >= CURDATE() = Fecha de hoy en este formato "YYYY-MM-DD" (string)*/
 /*================================================*/
-/**/
-
+/*TICKETS ABIERTOS POR COLA*/
+SELECT 
+now() as time,
+queue.name AS FILA, 
+count(*) AS Total
+FROM ticket INNER JOIN queue ON ticket.queue_id = queue.id 
+WHERE (ticket_state_id = '4' OR ticket_state_id = '6' OR ticket_state_id = '1'  ) 
+GROUP BY queue.name;
 /**/
 /*================================================*/
+/*CLIENTES ACTUALES DEL SERVICIO*/
+SELECT count(*) FROM users WHERE  (id <> 1) AND (id <> 2);
+/**/
+/*================================================*/
+/*TICKETS ABIERTOS INCIDENTES VS REQUERIMIENTOS*/
+SELECT 
+  COUNT(*), ticket_type.name  
+  FROM ticket 
+    INNER JOIN ticket_type ON ticket.type_id = ticket_type.id  
+  WHERE (ticket_state_id = 1) OR (ticket_state_id = 4) OR (ticket_state_id = 6) OR (ticket_state_id = 7) OR (ticket_state_id = 8) OR (ticket_state_id = 9) 
+GROUP BY ticket_type.name;
 /**/
