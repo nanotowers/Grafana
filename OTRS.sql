@@ -52,7 +52,7 @@ SELECT
   COUNT(*), ticket_type.name  
   FROM ticket 
     INNER JOIN ticket_type ON ticket.type_id = ticket_type.id  
-  WHERE (ticket_state_id = 1) OR (ticket_state_id = 4) OR (ticket_state_id = 6) OR (ticket_state_id = 7) OR (ticket_state_id = 8) OR (ticket_state_id = 9) 
+  WHERE ticket_state_id IN (1,4,6,7,8,9) 
 GROUP BY ticket_type.name;
 /**/
 /*================================================*/
