@@ -55,3 +55,12 @@ SELECT
   WHERE (ticket_state_id = 1) OR (ticket_state_id = 4) OR (ticket_state_id = 6) OR (ticket_state_id = 7) OR (ticket_state_id = 8) OR (ticket_state_id = 9) 
 GROUP BY ticket_type.name;
 /**/
+/*================================================*/
+/*TICKETS ABIERTOS POR AGENTE EN UNA COLA "LA 2"*/
+SELECT CONCAT(u.first_name, ' ',u.last_name)  AS Nombre, count(t.id) Tickets 
+  FROM ticket t, queue q, users u 
+  WHERE u.id = t.user_id AND q.id = t.queue_id AND t.ticket_state_id in (4,6,7,8) AND q.id = 2 
+GROUP BY Nombre;
+
+SELECT CONCAT(u.first_name, ' ',u.last_name)  AS Nombre, count(t.id) Tickets FROM ticket t, queue q, users u  WHERE u.id = t.user_id AND q.id = t.queue_id AND t.ticket_state_id in (4,6,7,8) AND q.id = 2 GROUP BY Nombre;
+/*================================================*/
