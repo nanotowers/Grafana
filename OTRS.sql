@@ -18,9 +18,6 @@ Queries para Grafana por cada panel, cada uno tiene su explicaione de como reali
                         ticket_state_id = 9     +   MERGED
 */
 
-/*============================================*/
-/*TOTAL DE TICKETS ABIERTOS */
-SELECT COUNT(*) FROM ticket WHERE (ticket_state_id = 1) or (ticket_state_id = 4) or (ticket_state_id = 6) or (ticket_state_id = 7) or (ticket_state_id = 8) or (ticket_state_id = 9)
 /*================================================*/
 /*TOTAL DE TICKETS NUEVOS */
 SELECT count(*) FROM ticket where ticket_state_id = '1';
