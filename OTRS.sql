@@ -40,10 +40,6 @@ WHERE (ticket_state_id = '4' OR ticket_state_id = '6' OR ticket_state_id = '1'  
 GROUP BY queue.name;
 /**/
 /*================================================*/
-/*CLIENTES ACTUALES DEL SERVICIO*/
-SELECT count(*) FROM users WHERE  (id <> 1) AND (id <> 2);
-/**/
-/*================================================*/
 /*TICKETS ABIERTOS INCIDENTES VS REQUERIMIENTOS*/
 SELECT 
   COUNT(*), ticket_type.name  
