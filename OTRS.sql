@@ -58,13 +58,4 @@ GROUP BY Nombre;
 SELECT CONCAT(u.first_name, ' ',u.last_name)  AS Nombre, count(t.id) Tickets FROM ticket t, queue q, users u  WHERE u.id = t.user_id AND q.id = t.queue_id AND t.ticket_state_id in (4,6,7,8) AND q.id = 2 GROUP BY Nombre;
 /*================================================*/
 
-/*================================================*/
-/*TOP 10 USUARIOS*/
- SELECT concat_ws(' ', u.first_name, u.last_name) 'Nombre', count(0) Cantidad
-FROM ticket t 
-inner join users u on t.user_id=u.id 
-where /*date(t.create_time) between '$Ano-01-01' and '$Ano-12-01' and*/u.valid_id='1'
-group by u.id 
-order by 2 desc
-limit 10       
-/**/
+
